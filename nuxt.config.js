@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors';
+import colors from 'vuetify/es5/util/colors'
 
 export default {
   mode: 'universal',
@@ -6,7 +6,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
+    // titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -59,7 +59,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
+      dark: true,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -80,6 +80,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend (config, ctx) {}
+    extend (config, ctx) { }
   }
 }
