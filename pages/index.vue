@@ -1,14 +1,14 @@
 <template>
   <v-layout column justify-center align-center>
-    <v-card class="mx-auto mt-12">
-      <v-card-title>How old i'am?</v-card-title>
+    <v-card class="mx-auto mt-4">
+      <v-card-title>How old am I?</v-card-title>
       <v-card-text>
         <v-text-field label="please give your name" />
       </v-card-text>
       <v-date-picker
         v-model="picker"
         color="deep-orange accent-2"
-        :landscape="true"
+
         :type="'date'"
       />
       <v-card-actions>
