@@ -12,7 +12,8 @@
         :type="'date'"
       />
       <v-card-actions>
-        <v-btn color="deep-orange lighten-1">
+        <v-spacer />
+        <v-btn outlined fab color="deep-orange lighten-1">
           save
         </v-btn>
       </v-card-actions>
