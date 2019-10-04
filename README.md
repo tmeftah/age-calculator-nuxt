@@ -1,6 +1,6 @@
 # nuxt-app
 
-> My stellar Nuxt.js project
+> Age Calculator with Nuxt.js vuetify
 
 ## Build Setup
 
