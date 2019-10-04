@@ -16,7 +16,9 @@
           v-model="birthday"
           color="deep-orange accent-2"
           full-width
+          :max="new Date().toISOString().substr(0, 10)"
           :type="'date'"
+          :locale="lang"
         />
         <v-card-actions>
           <div class="flex-grow-1" />
@@ -88,9 +90,13 @@ export default {
     },
     getUsers () {
       return this.$store.getters.users
+    },
+    lang () {
+      return this.$store.getters.lang
     }
 
   },
+
   methods: {
 
     addUser (event) {
