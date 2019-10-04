@@ -1,13 +1,19 @@
 <template>
   <v-layout row>
-    <v-flex fill-height d-flex>
+    <v-flex
+      fill-height
+      d-flex
+    >
       <v-card>
         <v-card-title>How old am I?</v-card-title>
         <v-card-text>
-          <v-text-field label="please give your name" />
+          <v-text-field
+            v-model="setUsername"
+            label="please give your name"
+          />
         </v-card-text>
         <v-date-picker
-          v-model="picker"
+          v-model="birthday"
           color="deep-orange accent-2"
           full-width
           :type="'date'"
@@ -15,6 +21,7 @@
         <v-card-actions>
           <v-btn
             color="deep-orange lighten-1"
+            @click="addUser"
           >
             save
           </v-btn>
@@ -25,10 +32,33 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
-      picker: new Date().toISOString().substr(0, 10)
+  computed: {
+    birthday: {
+      get () { return this.$store.state.birthday },
+      set (newValue) { this.$store.commit('setBirthday', newValue) }
+    },
+    setUsername: {
+      get () { return this.$store.state.currentUserName },
+      set (newValue) {
+        this.$store.commit('setUserName', newValue)
+      }
 
+    },
+    getUsers () {
+      return this.$store.getters.users
+    }
+
+  },
+  methods: {
+
+    addUser (event) {
+      if (this.$store.state.currentUserName) {
+        this.$store.commit('addUser')
+        if (this.$store.getters.users.length === 1) {
+          this.$store.dispatch('startTimer')
+        }
+      }
+      event.preventDefault()
     }
   }
 }
