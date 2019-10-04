@@ -5,10 +5,7 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
+    <v-footer app>
       <span>&copy; 2019 Tarek Meftah</span>
     </v-footer>
   </v-app>
@@ -16,13 +13,6 @@
 
 <script>
 export default {
-  data () {
-    return {
-      fixed: false
-    }
-  },
-  beforeMount () {
-    this.$store.dispatch('setLang', navigator.language)
-  }
+
 }
 </script>

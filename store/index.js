@@ -1,16 +1,15 @@
 
 export const state = () => ({
-
   birthday: new Date().toISOString().substr(0, 10),
   currentUserName: '',
   list: [],
-  lang: ''
+  locale: ''
 
 })
 
 export const mutations = {
-  setLang (state, lang) {
-    state.lang = lang
+  SET_LANG (state, locale) {
+    state.locale = locale
   },
   setBirthday (state, birthday) {
     state.birthday = birthday
@@ -56,13 +55,10 @@ export const mutations = {
 export const actions = {
   startTimer ({ commit }) {
     setInterval(() => commit('updateAge'), 1000)
-  },
-  setLang ({ commit }, lang) {
-    commit('setLang', lang)
   }
 }
 
 export const getters = {
   users: (state) => { return state.list },
-  lang: (state) => { return state.lang }
+  locale: (state) => { return state.locale }
 }

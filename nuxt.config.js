@@ -22,7 +22,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: 'cyan' },
   /*
    ** Global CSS
    */
@@ -30,7 +30,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/vuex-persist', ssr: false }],
+  router: {
+    middleware: 'i18n'
+  },
+  plugins: [{ src: '~/plugins/vuex-persist', ssr: false }, '~/plugins/i18n.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -83,6 +86,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    vendor: ['vue-i18n'],
     extend (config, ctx) { }
   }
 }
