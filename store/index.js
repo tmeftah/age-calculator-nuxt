@@ -17,7 +17,11 @@ export const mutations = {
     state.list.push({
       username: state.currentUserName,
       birthday: state.birthday,
-      age: null
+      age: {
+        years: 0,
+        months: 0,
+        days: 0
+      }
     })
   },
 
