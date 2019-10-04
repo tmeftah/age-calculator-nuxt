@@ -19,11 +19,14 @@
           :type="'date'"
         />
         <v-card-actions>
+          <div class="flex-grow-1" />
           <v-btn
-            color="deep-orange lighten-1"
+            color="green dark-1"
+            small
+            fab
             @click="addUser"
           >
-            save
+            <v-icon>mdi-content-save</v-icon>
           </v-btn>
         </v-card-actions>
         <hr>
@@ -40,6 +43,7 @@
                 <th class="text-left">
                   Age
                 </th>
+                <th />
               </tr>
             </thead>
             <tbody>
@@ -50,6 +54,16 @@
                 <td>{{ item.username }}</td>
                 <td>{{ item.birthday }}</td>
                 <td>{{ item.age.years }} year(s) , {{ item.age.months }} month(s), {{ item.age.days }} day(s)</td>
+                <td>
+                  <v-btn
+                    color="red"
+                    x-small
+                    fab
+                    @click="removeUser(item)"
+                  >
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                </td>
               </tr>
             </tbody>
           </template>
@@ -87,6 +101,9 @@ export default {
         }
       }
       event.preventDefault()
+    },
+    removeUser (user) {
+      this.$store.commit('removeUser', user)
     }
 
   }

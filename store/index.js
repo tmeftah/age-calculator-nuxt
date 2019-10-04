@@ -13,6 +13,7 @@ export const mutations = {
   setUserName (state, username) {
     state.currentUserName = username
   },
+
   addUser (state) {
     state.list.push({
       username: state.currentUserName,
@@ -23,6 +24,10 @@ export const mutations = {
         days: 0
       }
     })
+  },
+
+  removeUser (state, user) {
+    state.list.splice(user, 1)
   },
 
   updateAge (state) {
