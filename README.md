@@ -2,8 +2,10 @@
 
 > Age Calculator with Nuxt.js vuetify
 
-<img src="static/App_1.png" width="400">
-<img src="static/App_2.png" width="300">
+<p align="center">
+  <img  height="600" src="static/App_1.png">
+</p>
+
 
 ## Build Setup
 
