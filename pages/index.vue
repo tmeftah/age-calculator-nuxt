@@ -26,6 +26,34 @@
             save
           </v-btn>
         </v-card-actions>
+        <hr>
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-left">
+                  Name
+                </th>
+                <th class="text-left">
+                  Birthday
+                </th>
+                <th class="text-left">
+                  Age
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="item in getUsers"
+                :key="item.name"
+              >
+                <td>{{ item.username }}</td>
+                <td>{{ item.birthday }}</td>
+                <td>{{ item.age.years }} year(s) , {{ item.age.months }} month(s), {{ item.age.days }} day(s)</td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
       </v-card>
     </v-flex>
   </v-layout>
@@ -60,6 +88,7 @@ export default {
       }
       event.preventDefault()
     }
+
   }
 }
 </script>
