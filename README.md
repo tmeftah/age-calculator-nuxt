@@ -1,6 +1,7 @@
-# nuxt-app
+# Age Calculator 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5b3c03d7-f373-4bc3-a2be-5d9ca73cdc81/deploy-status)](https://app.netlify.com/sites/agecalc/deploys)
 
-> Age Calculator with Nuxt.js vuetify
+Age Calculator with Nuxt.js vuetify 
 
 <p align="center">
   <img  height="600" src="static/App_1.png">
