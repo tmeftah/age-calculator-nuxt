@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-content>
+    <v-content v-cloak>
       <v-container
         class="fill-height"
         fluid
