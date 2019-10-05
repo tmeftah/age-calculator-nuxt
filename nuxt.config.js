@@ -30,10 +30,8 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  router: {
-    middleware: 'i18n'
-  },
-  plugins: [{ src: '~/plugins/vuex-persist', ssr: false }, '~/plugins/i18n.js'],
+
+  plugins: [{ src: '~/plugins/vuex-persist', ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */
