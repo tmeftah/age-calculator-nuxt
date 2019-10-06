@@ -2,15 +2,12 @@
 export const state = () => ({
   birthday: new Date().toISOString().substr(0, 10),
   currentUserName: '',
-  list: [],
-  locale: ''
+  list: []
 
 })
 
 export const mutations = {
-  SET_LANG (state, locale) {
-    state.locale = locale
-  },
+
   setBirthday (state, birthday) {
     state.birthday = birthday
   },
