@@ -5,6 +5,8 @@ export default {
   /*
    ** Headers of the page
    */
+  mode: 'universal',
+
   head: {
     // titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
@@ -19,6 +21,7 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  pageTransition: 'page',
   /*
    ** Customize the progress-bar color
    */
@@ -84,7 +87,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    vendor: ['vue-i18n'],
+
     extend (config, ctx) { }
   }
 }
