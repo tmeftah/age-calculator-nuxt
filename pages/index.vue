@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-content v-show="show">
+  <v-app v-show="show">
+    <v-content>
       <v-container
         class="fill-height"
         fluid
