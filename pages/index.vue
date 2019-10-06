@@ -1,6 +1,6 @@
 <template>
-  <v-app id="inspire">
-    <v-content v-cloak>
+  <v-app>
+    <v-content v-show="show">
       <v-container
         class="fill-height"
         fluid
@@ -14,44 +14,35 @@
             sm="8"
             md="4"
           >
-            <v-card class="elevation-12">
-              <v-toolbar
-                color="deep-orange accent-3"
-                dark
-                flat
-              >
-                <v-toolbar-title>How old am I?</v-toolbar-title>
-              </v-toolbar>
-
+            <v-card>
               <v-card-text>
                 <v-text-field
                   v-model="setUsername"
                   label="please give your name"
                   type="text"
-                  solo
                 />
               </v-card-text>
               <v-date-picker
                 v-model="birthday"
-                color="deep-orange accent-1"
                 full-width
                 :max="new Date().toISOString().substr(0, 10)"
                 :type="'date'"
-                :locale="getLocale"
+                :locale="lang"
               />
               <v-card-actions>
-                <div class="flex-grow-1" />
                 <v-btn
-                  color="green dark-1"
-                  small
-                  fab
+                  color="success"
                   @click="addUser"
                 >
                   <v-icon>mdi-content-save</v-icon>
                 </v-btn>
               </v-card-actions>
-              <hr>
-              <v-simple-table>
+
+              <v-simple-table
+                fixed-header
+                height="150px"
+                class="mt-4"
+              >
                 <template v-slot:default>
                   <thead>
                     <tr>
@@ -59,12 +50,8 @@
                         Name
                       </th>
                       <th class="text-left">
-                        Birthday
+                        action
                       </th>
-                      <th class="text-left">
-                        Age
-                      </th>
-                      <th />
                     </tr>
                   </thead>
                   <tbody>
@@ -72,17 +59,20 @@
                       v-for="item in getUsers"
                       :key="item.name"
                     >
-                      <td>{{ item.username }}</td>
-                      <td>{{ item.birthday }}</td>
-                      <td>{{ item.age.years }} year(s) , {{ item.age.months }} month(s), {{ item.age.days }} day(s)</td>
+                      <td>
+                        {{ item.username }}: {{ $moment(item.birthday).format('d/MM/YYYY') }}<br>
+
+                        <small>{{ item.age.years }} year(s) , {{ item.age.months }} month(s), {{ item.age.days }} day(s)</small>
+                      </td>
                       <td>
                         <v-btn
-                          color="red"
+                          color="error"
                           x-small
-                          fab
                           @click="removeUser(item)"
                         >
-                          <v-icon>mdi-delete</v-icon>
+                          <v-icon small>
+                            mdi-delete
+                          </v-icon>
                         </v-btn>
                       </td>
                     </tr>
@@ -102,6 +92,13 @@
 <script>
 export default {
 
+  data () {
+    return {
+      show: false,
+      lang: detectAgent()
+    }
+  },
+
   computed: {
     birthday: {
       get () { return this.$store.state.birthday },
@@ -116,24 +113,21 @@ export default {
     },
     getUsers () {
       return this.$store.getters.users
-    },
-    getLocale () {
-      return this.$store.getters.locale
     }
 
   },
-  // beforeMount () {
-  //   this.$store.dispatch('setlang', navigator.language)
-  // },
+  created () {
+    if (process.browser) {
+      this.show = true
+    }
+    this.$store.dispatch('startTimer')
+  },
 
   methods: {
 
     addUser (event) {
       if (this.$store.state.currentUserName) {
         this.$store.commit('addUser')
-        if (this.$store.getters.users.length === 1) {
-          this.$store.dispatch('startTimer')
-        }
       }
       event.preventDefault()
     },
@@ -143,4 +137,10 @@ export default {
 
   }
 }
+function detectAgent () {
+  if (process.client) {
+    return navigator.language
+  }
+}
+
 </script>
